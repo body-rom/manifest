@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="body"
+           fetch="https://github.com/body-rom/"
+           review=".."
+           revision="refs/heads/16-qpr2" />
+
+  <remote  name="AndroidOne"
+           fetch="https://github.com/AndroidOne-Staging/"
+           review=".."
+           revision="refs/heads/16-qpr1" />
+
+  <!-- bootable -->
+  <project path="bootable/deprecated-ota" name="bootable_deprecated-ota" groups="pdk-cw" remote="body" />
+  <project path="bootable/recovery" name="bootable_recovery" groups="pdk" remote="body" />
+
+  <!-- build -->
+  <project path="build/make" name="build" groups="pdk,sysui-studio" remote="body" >
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="build_soong" groups="pdk,tradefed,sysui-studio" remote="body" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- device -->
+  <project path="device/lineage/sepolicy" name="device_lineage_sepolicy" remote="body" />
+
+  <!-- external -->
+  <project path="external/tinycompress" name="external_tinycompress" groups="pdk" remote="body" />
+  <project path="external/dtc" name="external_dtc" remote="body" />
+  <project path="external/gptfdisk" name="external_gptfdisk" remote="body" />
+  <project path="external/mksh" name="external_mksh" remote="body" />
+  <project path="external/e2fsprogs" name="external_e2fsprogs" remote="body" />
+
+  <!-- frameworks -->
+  <project path="frameworks/native" name="frameworks_native" groups="pdk" remote="body" />
+
+  <!-- hardware -->
+  <project path="hardware/libhardware" name="hardware_libhardware" groups="pdk" remote="body" />
+  <project path="hardware/interfaces" name="hardware_interfaces" groups="pdk,sysui-studio" remote="body" />
+  <project path="hardware/lineage/compat" name="hardware_lineage_compat" remote="body" />
+
+  <!-- kernel -->
+  <project path="kernel/configs" name="kernel_configs" groups="vts,pdk" remote="body" />
+
+  <!-- Packages -->
+  <project path="packages/modules/Connectivity" name="packages_modules_Connectivity" groups="pdk-cw-fs,pdk-fs" remote="body" />
+  <project path="packages/modules/UprobeStats" name="packages_modules_UprobeStats" groups="pdk-cw-fs,pdk-fs" remote="body" />
+
+  <!-- system -->
+  <project path="system/bpf" name="system_bpf" groups="pdk" remote="body" />
+  <project path="system/chre" name="system_chre" groups="pdk" remote="body" />
+  <project path="system/core" name="system_core" groups="pdk" remote="body" />
+  <project path="system/keymaster" name="system_keymaster" groups="pdk" remote="body" />
+  <project path="system/libhidl" name="system_libhidl" remote="body" />
+  <project path="system/libziparchive" name="system_libziparchive" groups="pdk" remote="body" />
+  <project path="system/media" name="system_media" groups="pdk" remote="body" />
+  <project path="system/netd" name="system_netd" groups="pdk" remote="body" />
+  <project path="system/sepolicy" name="system_sepolicy" groups="pdk" remote="body" />
+  <project path="system/update_engine" name="system_update_engine" groups="pdk" remote="body" />
+  <project path="system/vold" name="system_vold" groups="pdk" remote="body" />
+
+  <!-- vendor -->
+  <project path="vendor/qcom/opensource/commonsys-intf/display" name="vendor_qcom_opensource_display-commonsys-intf" groups="qcom,qssi" remote="body" />
+  <project path="vendor/aosp" name="vendor_body" remote="body" />
+  <project path="vendor/gms" name="vendor_gms" remote="AndroidOne" clone-depth="1" />
+
+</manifest>
